@@ -149,8 +149,8 @@ public class Redirect30xInterceptor {
                         // we can't directly send the next request because we still have to received LastContent
                         requestSender.drainChannelAndExecuteNextRequest(channel, future, nextRequest);
                     } else {
-                        channelManager.drainChannelAndOffer(channel, future, initialConnectionKeepAlive, initialPartitionKey);
                         requestSender.sendNextRequest(nextRequest, future);
+                        channelManager.drainChannelAndOffer(channel, future, initialConnectionKeepAlive, initialPartitionKey);
                     }
 
                 } else {
